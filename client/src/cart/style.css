@@ -1,0 +1,108 @@
+.cart-page{
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+}
+
+.empty-cart-page{
+    margin: 100px;
+}
+
+.empty-cart-page button{
+    margin: 25px;
+    width: 150px;
+    height: 50px;
+}
+
+.cart-table{
+    width: 80%;
+    margin-top: 50px;
+    display: table;
+    border-collapse: collapse;
+}
+
+.table-header{
+    display: table-header-group;
+    text-align: right;
+}
+
+.cart-item{
+    text-align: right;
+    border-bottom: 1px solid black;
+}
+
+.cell-item{
+    height: 75px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cell-item img{
+    height: 100%;
+}
+
+.cart-item input{
+    width: 40px;
+    height: 40px;
+    text-align: center;
+}
+
+.cart-summary{
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    margin-right: auto;
+    /* align-items: center; */
+    gap: 15px;
+}
+
+.cart-summary-row{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid gray;
+}
+
+.item-summary-row{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid gray;
+    height: 175px ;
+}
+
+.submit-page{
+    display: flex;
+    justify-content: space-around;
+}
+
+.submit-form{
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.submit-form p{
+    font-size: 16px;
+}
+.form-error{
+    color: red;
+    font: 12px;
+}
+.submit-form input{
+    width: 200px;
+}
+
+.submit-form button{
+    width: 200px;
+   flex-grow: 0;
+   margin-top: 20px;
+}
+
+.form-select{
+    display: flex;
+    margin: 10px 0px;
+    align-items: center;
+}

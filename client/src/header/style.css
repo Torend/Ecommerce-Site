@@ -1,0 +1,50 @@
+.header{
+    width: 100%;
+    height: 60px;
+    background-color: black;
+    color: white;
+    display: flex;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 100;
+    padding: 0 60px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo div {
+    font-size: 42px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 50px;
+    text-decoration: none;
+}
+
+a{
+    text-decoration: none;
+    color:white;
+}
+
+.nav-btns-list {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-btn {
+    display: flex;
+    align-items: flex-end;
+}
