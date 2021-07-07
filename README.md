@@ -4,7 +4,7 @@ react - redux toolkit - express - node - mongodb
 
 ## Visuals
 
-<img src="https://github.com/Torend/Ecommerce-Site/blob/master/client/public/GLS.gif" width="85%"/>
+![](GLS.gif)
 
 ## Core Libraries
 
