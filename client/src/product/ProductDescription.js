@@ -11,16 +11,20 @@ const ProductDescription = ({ item }) => {
         <div className="product-feature-contain">
           <h2 className="product-feature-title">תכונות עיקריות</h2>
           <ul className="product-feature-list">
-            {item.features.map((feature) => {
-              return <li className="product-feature">{feature}</li>;
+            {item.features.map((feature, index) => {
+              return (
+                <li key={index} className="product-feature">
+                  {feature}
+                </li>
+              );
             })}
           </ul>
         </div>
         <div className="product-specs-contain">
           <h2 className="product-specs-title">מפרט טכני</h2>
-          {item.specs.map((spec) => {
+          {item.specs.map((spec, index) => {
             return (
-              <div>
+              <div key={index}>
                 <p className="product-specs">{spec}</p>
                 <br />
               </div>
@@ -33,21 +37,23 @@ const ProductDescription = ({ item }) => {
           <h2 className="additional-info-title">מידע נוסף</h2>
           <p className="additional-info">{item.additionalInfo}</p>
         </div>
-      </section>
-      <section className="black-section">
-        <h2 className="product-specs-title">המלצות</h2>
-        <div className="product-videos">
-          {item.videos.map((video) => {
-            return (
-              <iframe
-                src={video}
-                frameborder="0"
-                allow="autoplay; encrypted-media"
-                allowfullscreen="true"
-                title="video"
-              />
-            );
-          })}
+        <div className="product-videos-container">
+          <h2 className="product-videos-title">המלצות</h2>
+          <div className="product-videos">
+            {item.videos.map((video, index) => {
+              if (index < 3)
+                return (
+                  <iframe
+                    key={index}
+                    src={video}
+                    frameBorder="0"
+                    allow="autoplay; encrypted-media"
+                    allowFullScreen={true}
+                    title="video"
+                  />
+                );
+            })}
+          </div>
         </div>
       </section>
     </div>

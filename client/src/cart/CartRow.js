@@ -4,7 +4,7 @@ import { updateItemAmount, removeItem } from '../cartSlice';
 import myLocalStorage from '../localStorage';
 import api from '../api';
 
-const CartRow = ({ id, name, amount, price, image, setErr }) => {
+const CartRow = ({ id, name, amount, price, image, color, setErr }) => {
   const [qnt, setQnt] = useState();
   const [itemErr, setItemErr] = useState(false);
 
@@ -32,32 +32,48 @@ const CartRow = ({ id, name, amount, price, image, setErr }) => {
   return (
     <tr className="cart-item">
       <td className="cell-item">
-        <img src={image} />
-        <p>{name}</p>
+        <div className="cell-image-name">
+          <img src={image} />
+          <h3>{name}</h3>
+        </div>
       </td>
       <td>
-        <p>₪{price}</p>
+        <div
+          className={`product-color`}
+          style={{ backgroundColor: color }}
+        ></div>
       </td>
       <td>
-        <input type="number" name={id} value={amount} onChange={handleChange} />
+        <p>{price} ₪</p>
       </td>
       <td>
-        <p>₪{amount * price}</p>
+        <input
+          type="number"
+          name={id}
+          value={amount}
+          onChange={handleChange}
+          onKeyDown={(event) => event.preventDefault()}
+          onWheel={(event) => event.target.blur()}
+        />
+      </td>
+      <td>
+        <p>{amount * price} ₪</p>
       </td>
       {itemErr ? ( // TODO style
         <td>
           <p style={{ color: 'red' }}>אין מספיק יחידות במלאי</p>
         </td>
       ) : null}
-      <td
-        onClick={() => {
-          dispatch(removeItem({ id: id }));
-          myLocalStorage.removeItem(id);
-          setErr(false);
-        }}
-        style={{ cursor: 'pointer' }}
-      >
-        X
+      <td>
+        <button
+          onClick={() => {
+            dispatch(removeItem({ id: id }));
+            myLocalStorage.removeItem(id);
+            setErr(false);
+          }}
+        >
+          הסר
+        </button>
       </td>
     </tr>
   );

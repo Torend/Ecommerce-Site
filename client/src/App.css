@@ -6,11 +6,12 @@
 .App {
   direction: rtl;
   /* height: max-content; */
-  /* min-height: 100vh; */
+  min-height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
 }
 
 .footer {
@@ -29,13 +30,25 @@ h1 {
   font-weight: 800;
 }
 
-h2 {
+h2, th {
   font-size: 1.33em;
   margin-bottom: 0.66em;
 }
 
+h3 {
+  font-size: 1em;
+  font-weight: bold;
+}
+
 ul {
   list-style: none;
+}
+
+img {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  /* -webkit-transform: translateZ(0);
+  transform: translateZ(0); */
 }
 
 button,
@@ -131,10 +144,8 @@ button:hover::after {
   gap: 2em;
   background-color: black;
   color: white;
-  margin-top: 2em;
-  padding: 1em 0;
+  padding: 2em 0;
   position: relative;
-  
 }
 
 .black-section::before {
@@ -149,8 +160,11 @@ button:hover::after {
 }
 
 .white-section {
-  padding: 1em 0;
+  padding: 2em 0;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
 }
 
 .white-section h2 {

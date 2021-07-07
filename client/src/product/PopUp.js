@@ -17,6 +17,8 @@ function Popup({ setPopup }) {
     return acc + parseInt(item.amount) * item.price;
   }, 0);
 
+  const shippingPrice = '35';
+
   const closePopup = () => {
     setPopup(false);
   };
@@ -25,9 +27,8 @@ function Popup({ setPopup }) {
     <div className="modal">
       <div className="black-out" onClick={() => closePopup()} />
       <div className="modal-container">
-        <button onClick={() => closePopup()}>X</button>
         <div className="modal-cart">
-          <p>הסל שלך</p>
+          <h2>הסל שלך</h2>
           <div className="modal-cart-list">
             {cart.map((item) => {
               return (
@@ -39,26 +40,35 @@ function Popup({ setPopup }) {
                   price={item.price}
                   image={item.image}
                   amount={item.amount}
+                  color={item.color}
                 />
               );
             })}
           </div>
         </div>
         <div className="modal-summary">
+          <h2>סיכום</h2>
           <div className="modal-summary-container">
-            <p>סיכום</p>
             <div className="cart-card-row">
               <p>מספר מוצרים</p>
               <p>{totalAmount}</p>
             </div>
             <div className="cart-card-row">
-              <p>סכום</p>
+              <p>סכום ביניים</p>
               <p>{totalPrice} ₪</p>
+            </div>
+            <div className="cart-card-row">
+              <p>משלוח ועלויות נוספות</p>
+              <p>{shippingPrice} ₪</p>
+            </div>
+            <div className="cart-card-row">
+              <h3>סך הכל לתשלום</h3>
+              <h3>{parseInt(totalPrice) + parseInt(shippingPrice)} ₪</h3>
             </div>
           </div>
           <div className="modal-btns">
-            <button onClick={() => history.push('/cart')}>מעבר לסל</button>
             <button onClick={() => history.goBack()}>המשך קניה</button>
+            <button className="dark-button" onClick={() => history.push('/cart')}>מעבר לסל</button>
           </div>
         </div>
       </div>
@@ -66,7 +76,7 @@ function Popup({ setPopup }) {
   );
 }
 
-const CartCard = ({ id, name, brandLogo, price, image, amount }) => {
+const CartCard = ({ id, name, brandLogo, price, image, amount, color }) => {
   const dispatch = useDispatch();
   const handleChange = (event) => {
     if (event.target.value > 0)
@@ -77,25 +87,37 @@ const CartCard = ({ id, name, brandLogo, price, image, amount }) => {
   };
   return (
     <div className="cart-card">
-      <div className="cart-card-image">
-        <img alt="" src={image} className="cart-card-img" />
-        <img alt="" src={brandLogo} className="cart-card-logo" />
+      <div className="cart-card-image-logo">
+        <img src={image} alt="" className="cart-card-image" />
+        <img src={brandLogo} alt="" className="cart-card-logo" />
       </div>
-
-      <div className="cart-card-desc">
-        <p>{name}</p>
-        <div className="cart-card-row">
-          <p>מחיר</p>
-          <p>₪{price * amount}</p>
-        </div>
-        <div className="cart-card-row">
-          <p>כמות</p>
-          <input
-            type="number"
-            name={id}
-            value={amount}
-            onChange={handleChange}
-          />
+      <div className="cart-card-info">
+        <div className="cart-card-info">
+          <h3 className="cart-card-name">
+            {name}
+          </h3>
+          <div className="cart-card-row">
+            <p className="cart-card-price">מחיר</p>
+            <p>₪{price * amount}</p>
+          </div>
+          <div className="cart-card-row">
+            <p className="cart-card-color">צבע</p>
+            <div
+              className={`card-color`}
+              style={{ backgroundColor: color }}
+            />
+          </div>
+          <div className="cart-card-row">
+            <p className="cart-card-amount">כמות</p>
+            <input
+              type="number"
+              name={id}
+              value={amount}
+              onChange={handleChange}
+              onKeyDown={event => event.preventDefault()}
+              onWheel={event => event.target.blur()}
+            />
+          </div>
         </div>
       </div>
     </div>

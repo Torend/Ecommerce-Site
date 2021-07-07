@@ -1,13 +1,14 @@
 .product-view {
   height: 100%;
-  margin-top: 50px;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .product-section {
   display: flex;
   gap: 50px;
+  padding: 2em 0;
 }
 
 .product-image-logo {
@@ -124,133 +125,161 @@
   cursor: pointer;
 }
 
-
 .black-out{
   position: absolute;
   top: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
+  right: -12.5vw;
+  width: 100vw;
+  height: 150%;
   background-color: rgba(0, 0, 0, 0.25);
   z-index: 5;
   backdrop-filter: blur(2px);
 }
 
-/* .modal::before {
-  content: '';
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.25);
-  z-index: 10;
-  top: -100px;
-  right: -12.5vw;
-} */
-
 .modal-container {
   position: fixed;
-  top: 50px;
-  right: 0;
-  background-color: white;
   display: flex;
-  justify-content: space-around;
-  width: 100%;
-  height: 300px;
-  gap: 50px;
-  z-index: 10;
-  /* margin-top: -100px; */
+  justify-content: space-between;
+  gap: 2em;
+  width: calc(100% - 25vw);
+  z-index: 100;
+  padding: 1em 0;
+  height: max-content;
+}
+
+.modal-container::before {
+  content: '';
+  background-color: white;
+  width: 100vw;
+  height: 100%;
+  position: absolute;
+  right: -12.5vw;
+  top: 0;
+  z-index: -100;
 }
 
 .modal-cart {
   width: 50%;
-  margin-top: 20px;
-}
-
-.modal-summary {
-  width: 50%;
-  margin-top: 20px;
+  height: max-content;
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  border-left: 1px solid #9a9a9a;
+  padding-left: 1em;
 }
 
-.modal-summary-container {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.modal-btns {
-  display: flex;
-  justify-content: center;
-  width: 50%;
-  gap: 50px;
-}
-
-.modal-btns button {
-  width: 50px;
-  height: 50px;
+.modal-cart ::-webkit-scrollbar {
+  display: initial;
 }
 
 .modal-cart-list {
+  max-height: 540px;
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  margin-top: 10px;
   overflow-y: auto;
-  height: 245px;
+  justify-content: space-between;
+  align-content: flex-start;
+  gap: 1em;
 }
 
 .cart-card {
   display: flex;
-  justify-content: space-evenly;
+  gap: 1em;
+  position: relative;
+  padding-left: 0.66em;
+}
+
+.cart-card:not(:last-of-type):after {
+  content: '';
+  width: calc(100% - 0.66em);
+  height: 1px;
+  position: absolute;
+  bottom: -0.66em;
+  right: 0;
+  background-color: #9a9a9a;
+}
+
+.cart-card-image-logo {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  margin-top: 10px;
+  justify-content: space-between;
+  width: 25%;
+}
+
+.cart-card-image-logo img {
+  object-fit: contain;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .cart-card-image {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-  height: 85px;
+  height: 80%;
 }
 
-.cart-card img {
-  height: 100%;
-}
-
-.cart-card-img {
-  height: 90%;
-}
 .cart-card-logo {
-  width: 40px;
-}
-
-.cart-card-desc {
-  margin-top: 15px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 10px;
-  height: 50px;
+  height: 15%;
 }
 
 .cart-card-row {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.cart-card-row input {
+  border: none;
+  font-size: 1em;
+  direction: ltr;
+  width: 25%;
+  caret-color: transparent;
+}
+
+.cart-card-row input:focus {
+  outline: none;
+}
+
+.cart-card-row input::-webkit-inner-spin-button {
+  opacity: 1;
+}
+
+.cart-card-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.33em;
+}
+
+.modal-summary {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-summary-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.33em;
+  margin-bottom: 2em;
+}
+
+.modal-btns {
+  display: flex;
+  width: 100%;
+  gap: 1em;
 }
 
 .product-videos{
   display: flex;
-  gap: 20%;
-  height: 300px;
+  flex-wrap: wrap;
+  row-gap: 1em;
+  justify-content: space-between;
 }
-
 
 iframe {
-  flex-grow: 1;
-  display: flex;
-  height: 100%;
+  border: 2px solid #9a9a9a;
+  border-radius: 8px;
+  aspect-ratio: 16/8;
+  width: 32%;
 }
+

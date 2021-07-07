@@ -36,6 +36,7 @@ function App() {
             amount: el.amount,
             image: item.image,
             brandLogo: item.brand.imgURL,
+            color: item.colors.find(color => color.id === el.id)?.hexCode
           })
         );
       })

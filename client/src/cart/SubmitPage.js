@@ -78,7 +78,7 @@ const SubmitPage = () => {
       <div className="submit-page">
         <div>
           <h1>תודה שקניתם אצלנו :)</h1>
-          <h2>חשבנוית תשלח למייל</h2>
+          <h2>חשבונית תשלח למייל</h2>
         </div>
         <Summary
           items={prevCart}
@@ -92,12 +92,12 @@ const SubmitPage = () => {
     return (
       <div className="submit-page">
         <SubmitForm items={cart} submitOrder={submitOrder} />
-        <Summary
+        {/* <Summary
           items={cart}
           totalAmount={totalAmount}
           totalPrice={totalPrice}
           shipmentPrice={shipmentPrice}
-        />
+        /> */}
       </div>
     );
 };

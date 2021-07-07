@@ -34,6 +34,7 @@ function Product() {
       amount: 1,
       image: item.image,
       brandLogo: item.brand.imgURL,
+      color: item.colors.find(color => color.id === id)?.hexCode
     };
     myLocalStorage.addItem(id, 1);
     dispatch(addItem(newItem));

@@ -57,6 +57,7 @@ function Cart() {
         <thead className="table-header">
           <tr>
             <th>שם המוצר</th>
+            <th>צבע</th>
             <th>מחיר</th>
             <th>כמות</th>
             <th>סכום</th>
@@ -72,27 +73,35 @@ function Cart() {
                 amount={item.amount}
                 price={item.price}
                 image={item.image}
+                color={item.color ? item.color : 'black'}
                 setErr={setErr}
               />
             );
           })}
         </tbody>
       </table>
-      <div className="cart-summary">
-        <div className="cart-summary-row">
-          <p>מספר מוצרים</p>
-          <p>{totalAmount}</p>
+      <div className="cart-summary-container">
+        <div className="cart-summary">
+          <div className="cart-summary-row">
+            <p>מספר מוצרים</p>
+            <p>{totalAmount}</p>
+          </div>
+          <div className="cart-summary-row">
+            <p>סכום ביניים</p>
+            <p>{totalPrice} ₪</p>
+          </div>
+          <div className="cart-summary-row">
+            <p>משלוח</p>
+            <p>{shipmentPrice} ₪</p>
+          </div>
+          <div className="cart-summary-row">
+            <h3>סך הכל לתשלום</h3>
+            <h3>{totalPrice + shipmentPrice} ₪</h3>
+          </div>
         </div>
-        <div className="cart-summary-row">
-          <p>משלוח</p>
-          <p>{shipmentPrice} ₪</p>
-        </div>
-        <div className="cart-summary-row">
-          <p>סכום כללי</p>
-          <p>{totalPrice + shipmentPrice} ₪</p>
-        </div>
-
-        <button onClick={onPaymentClick}>לתשלום</button>
+        <button className="dark-button" onClick={onPaymentClick}>
+          לתשלום ופרטי משלוח
+        </button>
       </div>
     </div>
   );

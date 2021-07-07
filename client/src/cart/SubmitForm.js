@@ -38,7 +38,7 @@ const SubmitForm = ({ submitOrder }) => {
         <p className="form-error">{errors.email?.message}</p>
         <p>פלאפון</p>
         <input {...register('phone')} />
-        <p className="form-error">{errors.phone?.message}</p>
+        <p className="form-error">{errors.phone?.message ? 'לא מספר פלאפון חוקי' : null}</p>
         <p>עיר</p>
         <input {...register('city')} />
         <p className="form-error">{errors.city?.message}</p>
